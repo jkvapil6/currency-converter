@@ -2,10 +2,15 @@ import axios from "axios"
 
 export const state = () => ({
   exchangeRate: 22.048,
+  
 })
 
 export const getters = {
-  exchangeRate: state => state.exchangeRate
+  exchangeRate: (state) => () => state.exchangeRate,
+  exchangeCzkToDollars: (czk) => () => {
+    console.log(czk)
+    return 42
+  }
 }
 
 export const actions = {
@@ -17,7 +22,7 @@ export const actions = {
   },
   convert({ commit }, czk) {
     console.log(czk)
-    
+
   }
 
 }

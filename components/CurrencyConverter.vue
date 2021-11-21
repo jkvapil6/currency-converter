@@ -26,10 +26,16 @@ export default {
     onSubmit(e) {
       e.preventDefault()
       this.convert(this.czk)
+      
     }
   },
   created() {
     this.fetchExchangeRates()
-  }
+  },
+  computed: {
+    czkToDollars() {
+      return this.$store.getters.exchangeCzkToDollars(this.czk)
+    }
+  } 
 }
 </script>
