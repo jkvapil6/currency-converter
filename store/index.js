@@ -2,33 +2,41 @@ import axios from "axios"
 
 export const state = () => ({
   exchangeRate: 22.048,
-  
+  czk: '',
+  dollar: '',
+  message: '',
 })
 
 export const getters = {
   exchangeRate: (state) => () => state.exchangeRate,
-  exchangeCzkToDollars: (czk) => () => {
-    console.log(czk)
-    return 42
-  }
+  czk: (state) => () => state.czk,
+  dollar: (state) => () => state.dollar,
 }
 
 export const actions = {
   async fetchExchangeRates({ commit }) {
     const response = await axios.get('https://jsonplaceholder.typicode.com/todos')
-    console.log(response.data.length)
     commit('setExchangeRate', response.data.length)
-    console.log("fetching currencies")
   },
-  convert({ commit }, czk) {
-    console.log(czk)
-
+  convertDollar({ commit }, dollar) {
+    commit('setDollar', dollar)
+  },
+  convertCzk({ commit }, czk) {
+    commit('setCzk', czk)
   }
-
 }
 
 export const mutations = {
   setExchangeRate(state, value) {
     state.exchangeRate = value
+  },
+  setDollar(state, value) {
+    state.dollar = value
+  },
+  setCzk(state, value) {
+    state.czk = value
+  },
+  updateMessage (state, message) {
+    state.message = message
   }
 }
