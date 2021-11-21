@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapActions, mapState, mapMutations, mapGetters } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   methods: {
